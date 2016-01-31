@@ -1,0 +1,19 @@
+--- src/termout.c.orig	2017-08-09 05:29:14.065728200 -0500
++++ src/termout.c	2017-08-09 05:29:22.212529300 -0500
+@@ -679,16 +679,6 @@ set_modes(bool state)
+             else
+               restore_cursor();
+           }
+-        when 1049:       /* cursor & alternate screen */
+-          if (!cfg.disable_alternate_screen) {
+-            if (state)
+-              save_cursor();
+-            term.selected = false;
+-            term_switch_screen(state, true);
+-            if (!state)
+-              restore_cursor();
+-            term.disptop = 0;
+-          }
+         when 1061:       /* VT220 keyboard emulation */
+           term.vt220_keys = state;
+         when 2004:       /* xterm bracketed paste mode */
